@@ -1,0 +1,37 @@
+QUESTION 4
+You are given a large dataset with n data points, each of which has m features. Can you come up with an algorithm that can cluster this data into k groups in less than O(n^2) time? How would you handle the case where the number of clusters k is not known in advance?
+
+We are given a data set of items, with certain features, and values for these features (like a vector). The task is to categorize those items into groups. To achieve this, we will use the k-Means algorithm; an unsupervised learning algorithm. ‘K’ in the name of the algorithm represents the number of groups/clusters we want to classify our items into.
+
+
+ The algorithm will categorize the items into k groups or clusters of similarity. To calculate that similarity, we will use the euclidean distance as measurement. (think of the items as points in an n-dimensional space). 
+
+The algorithm works as follows:
+
+>>First, we initialize k points, called means or cluster centroids, randomly.
+>>We categorize each item to its closest mean and we update the mean’s coordinates, which are the averages of the items categorized in that cluster so far.
+>>We repeat the process for a given number of iterations and at the end, we have our clusters.
+
+The “points” mentioned above are called means because they are the mean values of the items categorized in them. To initialize these means, we have a lot of options. An intuitive method is to initialize the means at random items in the data set. Another method is to initialize the means at random values between the boundaries of the data set (if for a feature x the items have values in [0,3], we will initialize the means with values for x at [0,3]).
+
+The above algorithm in pseudocode is as follows:  
+
+Initialize k means with random values
+
+--> For a given number of iterations:
+    
+    --> Iterate through items:
+    
+        --> Find the mean closest to the item by calculating 
+        the euclidean distance of the item with each of the means
+        
+        --> Assign item to mean
+        
+        --> Update mean by shifting it to the average of the items in that cluster
+
+K-Means is a clustering algorithm with one fundamental property: the number of clusters is defined in advance.
+
+BUT WHAT IF THE NUMBER OF CLUSTER IS NOT KNOW?
+
+ In addition to K-Means, there are other types of clustering algorithms like Hierarchical Clustering, Affinity Propagation, or Spectral Clustering. 
+These algorithms can be used when we don’t know how many clusters there will be. Once we determine how many clusters there will be, we can use the K-Means Clustering algorithm to gain more insight into our data.
